@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Task</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 450px;
+            margin: 50px auto;
+            background: #fff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgb(0 0 0 / 10%);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 25px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #444;
+            display: block;
+            margin-bottom: 5px;
+            margin-top: 15px;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="email"],
+        input[type="date"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+            transition: 0.2s;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            border-color: #4a90e2;
+            outline: none;
+            box-shadow: 0 0 5px rgba(74, 144, 226, 0.4);
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 25px;
+            background: #4a90e2;
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background: #357ac8;
+        }
+
+        .link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .link a {
+            color: #4a90e2;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        .link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="container">
+        <h1>Create New Task</h1>
+
+        <form method="POST" action="">
+            {% csrf_token %}
+
+            <label>Name:</label>
+            <input type="text" name="name" required>
+
+            <label>Title:</label>
+            <input type="text" name="title" required>
+
+            <label>Description:</label>
+            <textarea name="description" rows="3"></textarea>
+
+            <label>Status:</label>
+            <select name="status">
+                <option value="new">New</option>
+                <option value="in_progress">In Progress</option>
+                <option value="done">Done</option>
+            </select>
+
+            <label>Priority:</label>
+            <input type="number" name="priorty">
+
+            <label>Start Date:</label>
+            <input type="date" name="start_date">
+
+            <label>Due Date:</label>
+            <input type="date" name="due_date">
+
+            <label>Email:</label>
+            <input type="email" name="email">
+
+            <button type="submit">Create</button>
+        </form>
+
+        <div class="link">
+            <a href="/tasks/">View All Tasks</a>
+        </div>
+    </div>
+
+</body>
+</html>
